@@ -26,7 +26,7 @@ public class Risk {
     private String category ;
     private int frequency ;
     private int impact ;
-
+    private String saif;
 
     @Column(columnDefinition = "text")
     private  String description ;
