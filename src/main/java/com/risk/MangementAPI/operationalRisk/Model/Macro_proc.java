@@ -1,15 +1,13 @@
 package com.risk.MangementAPI.operationalRisk.Model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-
+import lombok.*;
 
 
 @Data
 @Entity
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Macro_proc {

@@ -4,7 +4,6 @@ import com.risk.MangementAPI.operationalRisk.DTOs.Request.AddRiskRequestDTO;
 import com.risk.MangementAPI.operationalRisk.DTOs.Response.RiskDTO;
 import com.risk.MangementAPI.operationalRisk.Model.Risk;
 import com.risk.MangementAPI.operationalRisk.Repositories.RiskRepository;
-import jakarta.persistence.Column;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,18 +13,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class AdminService {
-    // MRO : ADD ,  DELETE  , UPDATE ,  ADD : Risk ,Processus , MacroProc
+public class RiskService {
+    // MRO : ADD ,  DELETE  , UPDATE ,  Get : Risk ,Processus , MacroProc
     private final RiskRepository riskRepository ;
     @Autowired
-    public  AdminService(RiskRepository riskRepository ){
+    public RiskService(RiskRepository riskRepository ){
         this.riskRepository = riskRepository ;
     }
 
     public  void addRisk(AddRiskRequestDTO data ) {
         // Create A Risk Entity
         Risk risk = new Risk();
-        // Populate The Risk Entity parametters with data that we will get from the request ...
+        // Populate The Risk Entity parameters with data that we will get from the request ...
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime date = LocalDateTime.parse(data.getDate() , formatter);
         risk.setDate(date ) ;

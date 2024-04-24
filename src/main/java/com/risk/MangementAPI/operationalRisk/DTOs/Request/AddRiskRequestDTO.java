@@ -6,9 +6,9 @@ import java.time.LocalDateTime;
 @Data
 public class AddRiskRequestDTO {
     private String  date ;
-    private  String typology ;
+    private String typology ;
     private String category ;
     private int frequency ;
     private int impact ;
-    private  String description ;
+    private String description ;
 }
