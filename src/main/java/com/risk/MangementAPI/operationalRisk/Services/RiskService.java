@@ -2,7 +2,9 @@ package com.risk.MangementAPI.operationalRisk.Services;
 
 import com.risk.MangementAPI.operationalRisk.DTOs.Request.AddRiskRequestDTO;
 import com.risk.MangementAPI.operationalRisk.DTOs.Response.RiskDTO;
+import com.risk.MangementAPI.operationalRisk.Model.Proc;
 import com.risk.MangementAPI.operationalRisk.Model.Risk;
+import com.risk.MangementAPI.operationalRisk.Repositories.ProcRepository;
 import com.risk.MangementAPI.operationalRisk.Repositories.RiskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,23 +18,23 @@ import java.util.List;
 public class RiskService {
     // MRO : ADD ,  DELETE  , UPDATE ,  Get : Risk ,Processus , MacroProc
     private final RiskRepository riskRepository ;
+    private final ProcRepository procRepository ;
     @Autowired
-    public RiskService(RiskRepository riskRepository ){
+    public RiskService(RiskRepository riskRepository , ProcRepository procRepository  ){
         this.riskRepository = riskRepository ;
+        this.procRepository = procRepository ;
     }
 
     public  void addRisk(AddRiskRequestDTO data ) {
         // Create A Risk Entity
         Risk risk = new Risk();
-        // Populate The Risk Entity parameters with data that we will get from the request ...
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime date = LocalDateTime.parse(data.getDate() , formatter);
-        risk.setDate(date ) ;
         risk.setDescription(data.getDescription());
         risk.setFrequency(data.getFrequency());
         risk.setTypology(data.getTypology());
         risk.setImpact(data.getImpact());
         risk.setCategory(data.getCategory());
+        Proc proc = this.procRepository.findById(data.getProcId()).orElseThrow();
+        risk.setProc(proc);
         // Save The New Entity In The Data Base Using the Repo
         this.riskRepository.save(risk) ;
     }
@@ -41,16 +43,16 @@ public class RiskService {
     public void updateRisk (int  riskId ,  AddRiskRequestDTO data ){
         Risk risk = new Risk();
         risk.setId( riskId );
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime date = LocalDateTime.parse(data.getDate() , formatter);
-        risk.setDate(date ) ;
         risk.setDescription(data.getDescription());
         risk.setFrequency(data.getFrequency());
         risk.setTypology(data.getTypology());
         risk.setImpact(data.getImpact());
         risk.setCategory(data.getCategory());
+        Proc proc = this.procRepository.findById(data.getProcId()).orElseThrow();
+        risk.setProc(proc);
         // Save The New Entity In The Data Base Using the Repo
         this.riskRepository.save(risk) ;
+
     }
 
     public RiskDTO getRiskById(int riskId ){

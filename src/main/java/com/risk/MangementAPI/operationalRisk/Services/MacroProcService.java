@@ -20,20 +20,6 @@ public class MacroProcService {
         this.macroProcRepository = macroProcRepository;
     }
 
-    public void addMacroProc(AddMacroProcRequestDTO data) {
-        Macro_proc macroProc = new Macro_proc();
-        macroProc.setMacroProcName(data.getMacroProcName());
-        macroProc.setProcID(data.getProcID());
-        this.macroProcRepository.save(macroProc);
-    }
-
-    public void updateMacroProc(Long id, AddMacroProcRequestDTO data) {
-        Macro_proc macroProc = macroProcRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Macro_proc not found with id: " + id));
-        macroProc.setMacroProcName(data.getMacroProcName());
-        macroProc.setProcID(data.getProcID());
-        this.macroProcRepository.save(macroProc);
-    }
 
     public Macro_proc getMacroProcById(Long id) {
         return macroProcRepository.findById(id)

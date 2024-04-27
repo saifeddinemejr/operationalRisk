@@ -3,6 +3,8 @@ package com.risk.MangementAPI.operationalRisk.Model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 
 @Data
 @Entity
@@ -16,10 +18,7 @@ public class Macro_proc {
     private Long id ;
     @Column(name = "Macro_Proc_Name" )
     private String MacroProcName ;
-    @Column(name = "Proc_id" )
-    private Long  ProcID ;
-
-    //@OnetoMany
-    //private Long Proc_id ProcID
+    @OneToMany(mappedBy = "macroProc")
+    private List<Proc> processes  ;
 
 }

@@ -21,12 +21,13 @@ public class Risk {
     @OneToMany(mappedBy ="risk")
     private Set<Incident>  incidents ;
 
-    private LocalDateTime date ;
     private  String typology ;
     private String category ;
     private int frequency ;
     private int impact ;
 
+    @ManyToOne()
+    private Proc proc ;
     @Column(columnDefinition = "text")
     private  String description ;
 

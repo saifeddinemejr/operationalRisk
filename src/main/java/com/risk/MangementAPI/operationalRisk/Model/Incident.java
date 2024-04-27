@@ -23,8 +23,10 @@ public class Incident {
     private LocalDateTime  occuranceDate ;
     @ManyToOne
     private Risk risk ;
-    @OneToOne
-    private Macro_proc macroProc ;
+    //
+    //
+    //
+    //
 
 
 }
