@@ -5,7 +5,6 @@ import com.risk.MangementAPI.operationalRisk.DTOs.Response.MacroProcDTO;
 import com.risk.MangementAPI.operationalRisk.DTOs.Response.ProcDTO;
 import com.risk.MangementAPI.operationalRisk.DTOs.Response.RiskDTO;
 import com.risk.MangementAPI.operationalRisk.Model.Macro_proc;
-import com.risk.MangementAPI.operationalRisk.Model.Proc;
 import com.risk.MangementAPI.operationalRisk.Services.MacroProcService;
 import com.risk.MangementAPI.operationalRisk.Services.ProcService;
 import com.risk.MangementAPI.operationalRisk.Services.RiskService;
@@ -19,12 +18,12 @@ import java.util.stream.Collectors;
 @RequestMapping("riskmanagement/")
 @CrossOrigin(origins="http://localhost:4200")
 
-public class RiskControlller {
+public class RiskController {
     private final MacroProcService macroProcService;
     private final RiskService riskService;
     private final ProcService procService ;
     @Autowired
-    public RiskControlller(RiskService riskService , MacroProcService macroProcService , ProcService procServie){
+    public RiskController(RiskService riskService , MacroProcService macroProcService , ProcService procServie){
         this.riskService = riskService;
         this.macroProcService = macroProcService;
         this.procService = procServie;

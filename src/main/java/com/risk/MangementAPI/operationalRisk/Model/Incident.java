@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -16,11 +17,17 @@ public class Incident {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;
     @Column(name = "detection_date" )
-    private LocalDateTime  detectionDate ;
+    private LocalDate detectionDate ;
     @Column(name = "declaration_date" )
-    private LocalDateTime  declarationDate ;
+    private LocalDate  declarationDate ;
     @Column(name = "occurance_date" )
-    private LocalDateTime  occuranceDate ;
+    private LocalDate  occuranceDate ;
+    @Column(name = "frequency")
+    private int frequency ;
+    @Column(name= "impact")
+    private int impact ;
+    @Column(name="description")
+    private String description ;
     @ManyToOne
     private Risk risk ;
     //

@@ -7,6 +7,7 @@ import com.risk.MangementAPI.operationalRisk.Repositories.Incident_Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -27,13 +28,16 @@ public class Incident_Service {
         // Create an Incident entity
         Incident incident = new Incident();
         // Populate the Incident entity parameters with data from the request
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime detectionDate = LocalDateTime.parse(data.getDetectionDate(), formatter);
-        LocalDateTime declarationDate = LocalDateTime.parse(data.getDeclarationDate(), formatter);
-        LocalDateTime occurrenceDate = LocalDateTime.parse(data.getOccurrenceDate(), formatter);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate detectionDate = LocalDate.parse(data.getDetectionDate(), formatter);
+        LocalDate declarationDate = LocalDate.parse(data.getDeclarationDate(), formatter);
+        LocalDate occurrenceDate = LocalDate.parse(data.getOccurrenceDate(), formatter);
         incident.setDetectionDate(detectionDate);
         incident.setDeclarationDate(declarationDate);
         incident.setOccuranceDate(occurrenceDate);
+        incident.setFrequency(data.getFrequency());
+        incident.setImpact(data.getImpact());
+        incident.setDescription(data.getDescription());
         // You may need to set the Risk object for the incident as well, depending on your requirements
         // incident.setRisk(data.getRisk());
         // Save the new entity in the database using the repository
@@ -43,13 +47,16 @@ public class Incident_Service {
     public void updateIncident(Long incidentId, AddIncidentRequestDTO data) {
         Incident incident = new Incident();
         incident.setId(incidentId);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime detectionDate = LocalDateTime.parse(data.getDetectionDate(), formatter);
-        LocalDateTime declarationDate = LocalDateTime.parse(data.getDeclarationDate(), formatter);
-        LocalDateTime occurrenceDate = LocalDateTime.parse(data.getOccurrenceDate(), formatter);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate detectionDate = LocalDate.parse(data.getDetectionDate(), formatter);
+        LocalDate declarationDate = LocalDate.parse(data.getDeclarationDate(), formatter);
+        LocalDate occurrenceDate = LocalDate.parse(data.getOccurrenceDate(), formatter);
         incident.setDetectionDate(detectionDate);
         incident.setDeclarationDate(declarationDate);
         incident.setOccuranceDate(occurrenceDate);
+        incident.setFrequency(data.getFrequency());
+        incident.setImpact(data.getImpact());
+        incident.setDescription(data.getDescription());
         // You may need to set the Risk object for the incident as well, depending on your requirements
         // incident.setRisk(data.getRisk());
         // Save the updated entity in the database using the repository

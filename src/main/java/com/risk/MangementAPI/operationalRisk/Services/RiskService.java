@@ -29,10 +29,8 @@ public class RiskService {
         // Create A Risk Entity
         Risk risk = new Risk();
         risk.setDescription(data.getDescription());
-        risk.setFrequency(data.getFrequency());
-        risk.setTypology(data.getTypology());
-        risk.setImpact(data.getImpact());
-        risk.setCategory(data.getCategory());
+//        risk.setTypology(data.getTypology());
+//        risk.setCategory(data.getCategory());
         Proc proc = this.procRepository.findById(data.getProcId()).orElseThrow();
         risk.setProc(proc);
         // Save The New Entity In The Data Base Using the Repo
@@ -44,10 +42,8 @@ public class RiskService {
         Risk risk = new Risk();
         risk.setId( riskId );
         risk.setDescription(data.getDescription());
-        risk.setFrequency(data.getFrequency());
-        risk.setTypology(data.getTypology());
-        risk.setImpact(data.getImpact());
-        risk.setCategory(data.getCategory());
+//        risk.setTypology(data.getTypology());
+//        risk.setCategory(data.getCategory());
         Proc proc = this.procRepository.findById(data.getProcId()).orElseThrow();
         risk.setProc(proc);
         // Save The New Entity In The Data Base Using the Repo
