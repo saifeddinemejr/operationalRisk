@@ -11,6 +11,8 @@ public class AddIncidentRequestDTO {
     private String occurrenceDate;
     private int frequency ;
     private int impact ;
-    private String Description ;
+    private String description ;
+    private int riskId;
+    private Long procId;
     // You may need to add more fields here based on your requirements
 }

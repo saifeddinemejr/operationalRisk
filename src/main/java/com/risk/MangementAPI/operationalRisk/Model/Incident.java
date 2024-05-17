@@ -30,6 +30,8 @@ public class Incident {
     private String description ;
     @ManyToOne
     private Risk risk ;
+    @ManyToOne
+    Proc proc ;
     //
     //
     //

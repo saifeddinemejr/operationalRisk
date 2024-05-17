@@ -18,15 +18,11 @@ public class Risk {
 
     @OneToMany(mappedBy ="risk")
     private Set<Incident>  incidents ;
-
-
-    private  String typology ;
-    private String category ;
-
     @ManyToOne()
     private Proc proc ;
-    @Column(columnDefinition = "text")
-    private  String description ;
+    @ManyToOne
+    private RiskCategory riskCategory ;
+
 
 }
 

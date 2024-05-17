@@ -3,12 +3,15 @@ package com.risk.MangementAPI.operationalRisk.Services;
 import com.risk.MangementAPI.operationalRisk.DTOs.Request.AddIncidentRequestDTO;
 import com.risk.MangementAPI.operationalRisk.DTOs.Response.IncidentResponseDTO;
 import com.risk.MangementAPI.operationalRisk.Model.Incident;
+import com.risk.MangementAPI.operationalRisk.Model.Proc;
+import com.risk.MangementAPI.operationalRisk.Model.Risk;
 import com.risk.MangementAPI.operationalRisk.Repositories.Incident_Repository;
+import com.risk.MangementAPI.operationalRisk.Repositories.ProcRepository;
+import com.risk.MangementAPI.operationalRisk.Repositories.RiskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,10 +21,14 @@ import java.util.Optional;
 public class Incident_Service {
 
     private final Incident_Repository incidentRepository;
+    private final RiskRepository riskRepository;
+    private final ProcRepository procRepository;
 
     @Autowired
-    public Incident_Service(Incident_Repository incidentRepository) {
+    public Incident_Service(Incident_Repository incidentRepository, RiskRepository riskRepository,ProcRepository procRepository) {
         this.incidentRepository = incidentRepository;
+        this.riskRepository = riskRepository;
+        this.procRepository = procRepository;
     }
 
     public void addIncident(AddIncidentRequestDTO data) {
@@ -38,9 +45,24 @@ public class Incident_Service {
         incident.setFrequency(data.getFrequency());
         incident.setImpact(data.getImpact());
         incident.setDescription(data.getDescription());
-        // You may need to set the Risk object for the incident as well, depending on your requirements
-        // incident.setRisk(data.getRisk());
-        // Save the new entity in the database using the repository
+        Risk risk = riskRepository.findById(data.getRiskId()).orElseThrow();
+        incident.setRisk(risk);
+//        System.out.println(risk);
+        Proc proc = procRepository.findById(data.getProcId()).orElseThrow();
+        incident.setProc(proc);
+//        System.out.println(proc);
+        // 1- you Must Add A Add 2 Varaibles One For The Risk id And One For The Proc Id
+
+        //  in the ADD INCIDENT REQUEST DTO  name them risk_id and proc_id type int or long depends
+        // o how you defined their ids in their @Entity class..
+        // 2- Get The RISK AND Proc entityse FROM THE DATA BASE
+        /* Your Code Might Look lIKE tHIS
+        *  Risk risk = riskRepository.findById(risk_id).orElseThrow();
+        * incident.setRisk(risk);
+        * Risk proc = riskRepository.findById(proc_id).orElseThrow();
+        * incident.setProc(proc);
+        *
+        */
         this.incidentRepository.save(incident);
     }
 
@@ -57,6 +79,10 @@ public class Incident_Service {
         incident.setFrequency(data.getFrequency());
         incident.setImpact(data.getImpact());
         incident.setDescription(data.getDescription());
+        Risk risk = riskRepository.findById(data.getRiskId()).orElseThrow();
+        incident.setRisk(risk);
+        Proc proc = procRepository.findById(data.getProcId()).orElseThrow();
+        incident.setProc(proc);
         // You may need to set the Risk object for the incident as well, depending on your requirements
         // incident.setRisk(data.getRisk());
         // Save the updated entity in the database using the repository

@@ -15,9 +15,9 @@ public class RiskDTO {
 
     public  RiskDTO toDto(Risk risk ) {
         this.id=risk.getId() ;
-        this.typology=risk.getTypology() ;
-        this.category =risk.getCategory();
-        this.description=risk.getDescription() ;
+//        this.typology=risk.getTypology() ;
+//        this.category =risk.getCategory();
+//        this.description=risk.getDescription() ;
         this.proc= ProcDTO.fromEntity(risk.getProc()) ;
         return this ;
     }

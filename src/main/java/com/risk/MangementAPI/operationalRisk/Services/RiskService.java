@@ -28,7 +28,6 @@ public class RiskService {
     public  void addRisk(AddRiskRequestDTO data ) {
         // Create A Risk Entity
         Risk risk = new Risk();
-        risk.setDescription(data.getDescription());
 //        risk.setTypology(data.getTypology());
 //        risk.setCategory(data.getCategory());
         Proc proc = this.procRepository.findById(data.getProcId()).orElseThrow();
@@ -41,7 +40,7 @@ public class RiskService {
     public void updateRisk (int  riskId ,  AddRiskRequestDTO data ){
         Risk risk = new Risk();
         risk.setId( riskId );
-        risk.setDescription(data.getDescription());
+
 //        risk.setTypology(data.getTypology());
 //        risk.setCategory(data.getCategory());
         Proc proc = this.procRepository.findById(data.getProcId()).orElseThrow();
