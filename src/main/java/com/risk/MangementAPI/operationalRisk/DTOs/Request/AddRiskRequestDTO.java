@@ -1,3 +1,4 @@
+/*
 package com.risk.MangementAPI.operationalRisk.DTOs.Request;
 
 import lombok.Data;
@@ -12,4 +13,4 @@ public class AddRiskRequestDTO {
     private String description ;
     private Long procId ;
 
-}
+}*/

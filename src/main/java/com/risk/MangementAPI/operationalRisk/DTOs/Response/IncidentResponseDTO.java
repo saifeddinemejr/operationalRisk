@@ -2,7 +2,7 @@ package com.risk.MangementAPI.operationalRisk.DTOs.Response;
 
 import com.risk.MangementAPI.operationalRisk.Model.Incident;
 import com.risk.MangementAPI.operationalRisk.Model.Proc;
-import com.risk.MangementAPI.operationalRisk.Model.Risk;
+//import com.risk.MangementAPI.operationalRisk.Model.Risk;
 import com.risk.MangementAPI.operationalRisk.Model.RiskCategory;
 import lombok.Data;
 
@@ -31,10 +31,10 @@ public class IncidentResponseDTO {
         this.frequency = incident.getFrequency();
         this.impact= incident.getImpact();
         this.Description=incident.getDescription();
-        Risk risk = incident.getRisk() ;
-        this.riskCategory =  risk.getRiskCategory().getName();
+//        Risk risk = incident.getRisk() ;
+        this.riskCategory =  incident.getRiskCategory().getName();
 
-          this. process = risk.getProc().getProcName() ;
+          this. process = incident.getProc().getProcName() ;
 
         // You may need to map more fields here based on your Incident entity
         return this;

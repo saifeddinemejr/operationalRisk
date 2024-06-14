@@ -18,8 +18,10 @@ public class RiskCategory {
 
     @ManyToOne
     private Typology typology;
-    @OneToMany(mappedBy = "riskCategory")
-    private List<Risk> risks;
+//    @ManyToOne
+//    private RiskCategory riskCategory;
+//    @OneToMany(mappedBy = "riskCategory")
+//    private List<Risk> risks;
 //    @OneToMany(mappedBy = "riskCategory")
 //    private List<Proc> procs;
 }

@@ -2,7 +2,7 @@ package com.risk.MangementAPI.operationalRisk.DTOs.Response;
 
 import com.risk.MangementAPI.operationalRisk.Model.Macro_proc;
 import com.risk.MangementAPI.operationalRisk.Model.Proc;
-import com.risk.MangementAPI.operationalRisk.Model.Risk;
+//import com.risk.MangementAPI.operationalRisk.Model.Risk;
 import jakarta.persistence.*;
 import lombok.Data;
 

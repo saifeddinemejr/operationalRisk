@@ -1,3 +1,4 @@
+/*
 package com.risk.MangementAPI.operationalRisk.Model;
 
 import jakarta.annotation.sql.DataSourceDefinitions;
@@ -16,13 +17,14 @@ public class Risk {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToMany(mappedBy ="risk")
-    private Set<Incident>  incidents ;
+//    @OneToMany(mappedBy ="risk")
+//    private Set<Incident>  incidents ;
     @ManyToOne()
     private Proc proc ;
-    @ManyToOne
-    private RiskCategory riskCategory ;
+//    @ManyToOne
+//    private RiskCategory riskCategory ;
 
 
 }
 
+*/

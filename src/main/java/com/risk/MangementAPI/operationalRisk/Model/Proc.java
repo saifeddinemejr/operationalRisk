@@ -15,8 +15,8 @@ public class Proc {
 
     // @OneToMany
     //  private Macro_proc macroProc ;
-    @OneToMany(mappedBy = "proc")
-    private List<Risk> risks ;
+//    @OneToMany(mappedBy = "proc")
+//    private List<Risk> risks ;
     @ManyToOne
     private Macro_proc macroProc;
 

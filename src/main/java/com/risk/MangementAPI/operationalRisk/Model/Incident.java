@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -28,8 +27,10 @@ public class Incident {
     private int impact ;
     @Column(name="description")
     private String description ;
+//    @ManyToOne
+//    private Risk risk ;
     @ManyToOne
-    private Risk risk ;
+    RiskCategory riskCategory ;
     @ManyToOne
     Proc proc ;
     //
