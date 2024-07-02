@@ -1,44 +1,34 @@
-/*
 package com.risk.MangementAPI.operationalRisk.Model;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
 
 @Entity
 @Table(name = "users")
 @Getter
-@AllArgsConstructor
+@Setter
 @NoArgsConstructor
-@Slf4j
 public class User {
 
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
 
-    private UUID id;
+    private Long id;
 
     @Column(nullable = false, unique = true)
-    private String username;
+    private String email;
 
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "user")
-    private List<Incident> incidents;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
-    @OneToOne
-    private Role roles ;
-
+    public enum Role {
+        MRO, CROC,CRO
+    }
 }
-*/

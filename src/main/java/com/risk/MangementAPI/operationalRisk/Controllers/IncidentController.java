@@ -22,6 +22,7 @@ public class IncidentController {
 
     @PostMapping("add-incident")
     public void addIncident(@RequestBody AddIncidentRequestDTO data) {
+        System.out.println(data);
         incidentService.addIncident(data);
     }
 
